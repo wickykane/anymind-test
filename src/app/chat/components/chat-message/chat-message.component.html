@@ -1,0 +1,31 @@
+<div *ngIf="!isActiveUser" class="chat-left" data-testid="chat-container">
+  <div class="chat-avatar">
+    <img src="./assets/images/{{ data.userId }}.png" alt="User" />
+    <div class="chat-name">{{ data.userId }}</div>
+  </div>
+  <div class="chat-text">
+    {{ data.text }}
+  </div>
+  <div class="chat-hour">{{ data.datetime | date: "shortTime" }}</div>
+</div>
+
+<div *ngIf="isActiveUser" class="chat-right" data-testid="chat-container">
+  <div class="chat-hour">
+    {{ data.datetime | date: "shortTime" }}
+    <ng-container *ngIf="!data.offline">
+      <span class="fa fa-check-circle"></span>
+      <span class="chat-message">Sent</span>
+    </ng-container>
+    <ng-container *ngIf="data.offline">
+      <span class="fa fa-exclamation-circle"></span>
+      <span class="chat-message">Error</span>
+    </ng-container>
+  </div>
+  <div class="chat-text">
+    {{ data.text }}
+  </div>
+  <div class="chat-avatar">
+    <img src="./assets/images/{{ data.userId }}.png" alt="User" />
+    <div class="chat-name">{{ data.userId }}</div>
+  </div>
+</div>

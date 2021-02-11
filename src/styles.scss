@@ -1,0 +1,179 @@
+/* You can add global styles to this file, and also import other style files */
+
+ul,
+ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.app-chat- {
+  &container {
+    height: 100%;
+    min-width: 500px;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    .app-header {
+      background-color: #0e1a25;
+      color: #ffffff;
+      padding: 0.5rem;
+      display: flex;
+      align-items: center;
+
+      .title {
+        color: #ffffff;
+        font-size: 1.2rem;
+        font-weight: bold;
+        margin: 0;
+      }
+
+      .description {
+        margin: 0 1rem;
+        font-size: 0.75rem;
+      }
+    }
+    .app-body {
+      display: flex;
+      flex: 1;
+      height: calc(100% - 46px);
+    }
+
+    .group-item {
+      padding: 0.5rem 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .group-item-header {
+      color: rgba(0, 0, 0, 0.45);
+      font-size: 0.75rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .app-sidebar {
+      flex: 1 1 20%;
+      min-width: 300px;
+      border-right: 1px solid rgb(230, 236, 243);
+      padding: 1rem;
+    }
+
+    .app-menu {
+      border-right: none;
+      font-size: 0.8rem;
+    }
+
+    .app-inner-content {
+      flex: 1;
+      flex: 1 1 75%;
+    }
+  }
+}
+
+/** Chat box global style **/
+
+.chat-container {
+  position: relative;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column-reverse;
+  flex: 1;
+}
+
+.chat-container .chat-left,
+.chat-container .chat-right {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  margin-bottom: 40px;
+}
+
+.chat-container img {
+  width: 48px;
+  height: 48px;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  border-radius: 30px;
+}
+
+.chat-container .chat-avatar {
+  margin-right: 20px;
+}
+
+.chat-container .chat-right {
+  justify-content: flex-end;
+}
+
+.chat-container .chat-right > .chat-avatar {
+  margin-left: 20px;
+  margin-right: 0;
+}
+
+.chat-container .chat-name {
+  font-size: 0.75rem;
+  color: #999999;
+  text-align: center;
+}
+
+.chat-container .chat-message {
+  font-size: 0.75rem;
+  color: #999999;
+  text-align: center;
+  margin: 0 0.5rem;
+}
+
+.chat-container .chat-text {
+  padding: 0.4rem 1rem;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  background: #ffffff;
+  font-weight: 300;
+  position: relative;
+  font-size: 0.8rem;
+  white-space: pre-line;
+}
+
+.chat-container .chat-text:before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  top: 10px;
+  left: -20px;
+  border: 10px solid;
+  border-color: transparent #ffffff transparent transparent;
+}
+
+.chat-container .chat-right > .chat-text {
+  text-align: right;
+}
+
+.chat-container .chat-right > .chat-text:before {
+  right: -20px;
+  border-color: transparent transparent transparent #ffffff;
+  left: inherit;
+}
+
+.chat-container .chat-hour {
+  padding: 0;
+  margin-left: 10px;
+  font-size: 0.8rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  .fa {
+    margin-left: 0.5rem;
+  }
+}
+
+.chat-container .chat-hour > span.fa-check-circle {
+  font-size: 16px;
+  color: #9ec94a;
+}
+
+.chat-container .chat-hour > span.fa-exclamation-circle {
+  font-size: 16px;
+  color: #b71e3c;
+}

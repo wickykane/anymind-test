@@ -1,0 +1,40 @@
+<div class="box-container">
+  <div class="box-header">{{ channel?.name }}</div>
+  <div class="box-body" #scrollContainer data-testid="scrollContainer">
+    <a
+      data-testid="fetch-more"
+      (click)="fetchMoreMessage(true)"
+      class="chat-fetch-more"
+      >Older messages</a
+    >
+    <div class="chat-container">
+      <app-chat-message
+        data-testid="chat-message"
+        *ngFor="let msg of messages"
+        [isActiveUser]="msg.userId === userId"
+        [data]="msg"
+      ></app-chat-message>
+    </div>
+    <a (click)="fetchMoreMessage(false)" class="chat-fetch-more"
+      >Fetch new messages</a
+    >
+  </div>
+  <div class="box-footer">
+    <textarea
+      nz-input
+      placeholder="Type your messages here"
+      nzBorderless
+      class="box-chat-input"
+      [formControl]="message"
+      #messageControl
+      data-testid="message-control"
+    ></textarea>
+    <button
+      [disabled]="!messageControl.value"
+      (click)="sendMessage()"
+      class="btn-send"
+    >
+      Send
+    </button>
+  </div>
+</div>

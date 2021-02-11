@@ -1,0 +1,51 @@
+<div class="app-chat-container">
+  <div class="app-header">
+    <h3 class="title">AnyChat</h3>
+    <div class="description">
+      All messages will be deleted at every 00:00 UTC
+    </div>
+  </div>
+  <div class="app-body">
+    <div class="app-sidebar">
+      <ul>
+        <li class="group-item">
+          <div class="group-item-header">Choose your user</div>
+          <nz-select
+            [ngModel]="selectedUser$ | async"
+            (ngModelChange)="selectUser($event)"
+            data-testid="select-user"
+          >
+            <nz-option
+              *ngFor="let user of users$ | async"
+              [nzValue]="user.userId"
+              [nzLabel]="user.userId"
+            ></nz-option>
+          </nz-select>
+        </li>
+        <li class="group-item">
+          <div class="group-item-header">Choose your Channel</div>
+          <ul nz-menu class="app-menu">
+            <li
+              data-testid="select-channel"
+              *ngFor="let channel of channelList"
+              [nzSelected]="channel.id === (selectedChannel$ | async)?.id"
+              nz-menu-item
+              (click)="selectChannel(channel)"
+            >
+              {{ channel.name }}
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="app-inner-content">
+      <app-chat-box
+        [channel]="selectedChannel$ | async"
+        [userId]="selectedUser$ | async"
+        [messages]="messages$ | async"
+        (send)="sendMessage($event)"
+        (fetchMore)="fetchMoreMessage($event)"
+      ></app-chat-box>
+    </div>
+  </div>
+</div>
